@@ -34,6 +34,7 @@ py-char-bytes/
 │   │
 │   ├── suites/                    # Specific evaluation runners
 │   │   ├── __init__.py
+│   │   ├── test_slm_consistency.py# Pass-at-K compliance & monotonicity
 │   │   ├── adversarial.py         # Prompt injection & dirty HTML payload sweeps
 │   │   └── oracle_alignment.py    # Cross-model agreement (Gemma vs Claude 3.5 Sonnet)
 │   │

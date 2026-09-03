@@ -12,6 +12,6 @@ def test_extract_syntactic_metrics_raises_or_returns():
     metrics = extract_syntactic_metrics(sample_text)
 
     assert isinstance(metrics, SyntacticMetrics)
-    assert metrics.word_count > 0
-    assert metrics.passive_voice_count >= 1  # "was written"
+    assert metrics.word_count == 10
+    assert metrics.passive_voice_count == 1  # "was written"
     assert metrics.noun_to_verb_ratio > 0.0
