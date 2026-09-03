@@ -63,7 +63,11 @@ This benchmark evaluates an enterprise-grade hybrid analytics pipeline integrati
 
 ---
 
-## 5. Production Pipeline Implementation Code
+## 5. Testing
+
+uv run pytest
+
+## 6. Production Pipeline Implementation Code
 
 ```python
 import json
