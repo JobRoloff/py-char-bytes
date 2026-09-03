@@ -1,4 +1,4 @@
-"""Service module for interacting with local SLM inference endpoints (Ollama) with schema validation."""
+"""Service module for interacting with local SLM inference endpoints."""
 
 from src.types.analysis import GemmaClarityResponse
 
@@ -26,7 +26,7 @@ class SLMClient:
 
         Returns:
             A tuple containing:
-                - Optional[GemmaClarityResponse]: Parsed & validated response schema, or None if failed.
+                - Optional[GemmaClarityResponse]: Parsed response schema, or None if failed.
                 - float: Execution latency in milliseconds.
                 - bool: Flag indicating whether schema validation succeeded.
 

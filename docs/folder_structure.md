@@ -24,7 +24,7 @@ py-char-bytes/
 │   ├── datasets/                  # Dataset loaders & preprocessors
 │   │   ├── __init__.py
 │   │   ├── clear.py               # CLEAR dataset parser & ground-truth normalized scores
-│   │   └── onestop.py             # OneStopEnglish Corpus loader
+│   │   └── onestop.py             # Deferred: OneStopEnglish Corpus loader
 │   │
 │   ├── metrics/                   # Statistical & system performance evaluators
 │   │   ├── __init__.py
@@ -35,8 +35,8 @@ py-char-bytes/
 │   ├── suites/                    # Specific evaluation runners
 │   │   ├── __init__.py
 │   │   ├── test_slm_consistency.py# Pass-at-K compliance & monotonicity
-│   │   ├── adversarial.py         # Prompt injection & dirty HTML payload sweeps
-│   │   └── oracle_alignment.py    # Cross-model agreement (Gemma vs Claude 3.5 Sonnet)
+│   │   ├── test_adversarial.py    # Prompt injection & dirty HTML payload sweeps
+│   │   └── oracle_alignment.py    # Deferred: cross-model agreement runner
 │   │
 │   └── runner.py                  # Entrypoint to run specific eval suites
 │

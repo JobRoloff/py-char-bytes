@@ -61,7 +61,7 @@ class PipelineResult(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     def to_flat_dict(self) -> dict:
-        """Helper method to flatten nested fields into a single 1D dict for Pandas/Polars conversion."""
+        """Flatten nested fields into a single 1D dict for dataframe conversion."""
         flat = {
             "document_id": self.document_id,
             "latency_ms": self.system.latency_ms,

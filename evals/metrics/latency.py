@@ -4,7 +4,9 @@ import numpy as np
 import pandas as pd
 
 
-def calculate_latency_percentiles(latencies_ms: pd.Series | np.ndarray | list[float]) -> dict[str, float]:
+def calculate_latency_percentiles(
+    latencies_ms: pd.Series | np.ndarray | list[float],
+) -> dict[str, float]:
     """Calculate P50, P90, P95, and P99 latency percentiles in milliseconds.
 
     Args:

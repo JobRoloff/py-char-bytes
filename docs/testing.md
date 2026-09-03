@@ -87,3 +87,12 @@ uv run ruff format .
 uv run pytest -m "not integration"
 uv run pytest evals/suites/test_slm_consistency.py -s
 uv run pytest evals/suites/test_adversarial.py -s
+
+## Explicitly Deferred Eval Surface
+
+These benchmark surfaces are described in the experiment scope but are not part
+of the current red-phase implementation target:
+
+- OneStopEnglish categorical alignment loader and suite
+- Oracle alignment runner for Claude/GPT comparison exports
+- Time-to-first-token and tokens-per-second streaming telemetry

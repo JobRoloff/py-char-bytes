@@ -15,14 +15,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from evals.datasets.clear import load_clear_dataframe
-from evals.metrics import (
+from evals.datasets.clear import load_clear_dataframe  # noqa: E402
+from evals.metrics import (  # noqa: E402
     calculate_ground_truth_correlations,
     calculate_latency_percentiles,
     calculate_schema_metrics,
 )
-from src.pipeline import process_text_payload
-from src.types.analysis import PipelineResult
+from src.pipeline import process_text_payload  # noqa: E402
+from src.types.analysis import PipelineResult  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - [%(levelname)s] - %(message)s")
 logger = logging.getLogger("BenchmarkRunner")
@@ -98,9 +98,7 @@ async def run_clear_benchmark(sample_size: int | None = 100, max_concurrency: in
     )
 
     fog_correlations = (
-        calculate_ground_truth_correlations(
-            valid_df["gunning_fog"], valid_df["clear_easiness"]
-        )
+        calculate_ground_truth_correlations(valid_df["gunning_fog"], valid_df["clear_easiness"])
         if not valid_df.empty
         else {}
     )
@@ -130,9 +128,12 @@ async def run_clear_benchmark(sample_size: int | None = 100, max_concurrency: in
         )
         print(f"  • Gemma SLM Score (Pearson r):  {slm_correlations.get('pearson_r', 0.0):.4f}")
         print(
-            f"  • Flesch Reading Ease (Spearman ρ): {flesch_correlations.get('spearman_rho', 0.0):.4f}"
+            "  • Flesch Reading Ease (Spearman ρ): "
+            f"{flesch_correlations.get('spearman_rho', 0.0):.4f}"
         )
-        print(f"  • Gunning Fog Index (Spearman ρ):   {fog_correlations.get('spearman_rho', 0.0):.4f}")
+        print(
+            f"  • Gunning Fog Index (Spearman ρ):   {fog_correlations.get('spearman_rho', 0.0):.4f}"
+        )
     else:
         print("Insufficient valid schema rows to calculate statistical alignment.")
 
