@@ -65,7 +65,44 @@ This benchmark evaluates an enterprise-grade hybrid analytics pipeline integrati
 
 ## 5. Testing
 
+The project has two testing surfaces:
+
+- **Unit tests** live under `tests/` and are the default fast feedback loop.
+- **Evaluation suites** live under `evals/suites/` and are opt-in because they require a live local Ollama runtime.
+
+Run the default unit test suite:
+
+```bash
 uv run pytest
+```
+
+During the current TDD red phase, this command is expected to fail on the unimplemented service and pipeline stubs. To run only the already-green schema and benchmark-helper tests:
+
+```bash
+uv run pytest tests/test_types.py tests/test_eval_metrics.py tests/test_clear_dataset.py
+```
+
+Run linting and formatting checks:
+
+```bash
+uv run ruff check .
+uv run ruff format .
+```
+
+Run the live SLM consistency evals after starting Ollama with `gemma:2b` available:
+
+```bash
+ollama run gemma:2b
+uv run pytest evals/suites/test_slm_consistency.py -s
+```
+
+Run the adversarial pipeline evals:
+
+```bash
+uv run pytest evals/suites/test_adversarial.py -s
+```
+
+The live eval suites are marked `integration`; keep them separate from the unit suite unless you are intentionally validating local model behavior.
 
 ## 6. Production Pipeline Implementation Code
 
