@@ -12,8 +12,8 @@ therefore, its accessed as follows
 curl http://192.168.1.15:8000/
 
 curl -X POST "http://192.168.1.15:8000/nlp/analyze" \
-     -H "Content-Type: application/json" \
-     -d '{"text": "The quick brown fox jumps over the lazy dog."}'
+  -H "Content-Type: application/json" \
+  -d '{"text": "The quick brown fox jumps over the lazy dog."}'
 
 ## 1. Abstract
 Automated text evaluation in production pipelines requires balancing deterministic precision, qualitative semantic reasoning, schema reliability, and computational efficiency. Traditional readability metrics (e.g., Flesch-Kincaid, Gunning Fog) provide ultra-fast, zero-variance syntactic signals but lack semantic context. Conversely, Small Language Models (SLMs) offer rich qualitative judgment but introduce non-deterministic execution, latent runtime delays, and structural drift.
