@@ -1,4 +1,19 @@
+---
+note: use just deterministic measures. agentic stuff will be done in a separate repo. Think of this as a short lived learning experiment . we'll eventually be using stuff from this repo in our agent. see tests, evals and services
+---
 # Benchmark Experiment: Hybrid Computational NLP and Local SLM Evaluation Pipeline
+
+interface with this container:
+
+note this is a service on the server to be used only by other services. 
+
+therefore, its accessed as follows
+
+curl http://192.168.1.15:8000/
+
+curl -X POST "http://192.168.1.15:8000/nlp/analyze" \
+     -H "Content-Type: application/json" \
+     -d '{"text": "The quick brown fox jumps over the lazy dog."}'
 
 ## 1. Abstract
 Automated text evaluation in production pipelines requires balancing deterministic precision, qualitative semantic reasoning, schema reliability, and computational efficiency. Traditional readability metrics (e.g., Flesch-Kincaid, Gunning Fog) provide ultra-fast, zero-variance syntactic signals but lack semantic context. Conversely, Small Language Models (SLMs) offer rich qualitative judgment but introduce non-deterministic execution, latent runtime delays, and structural drift.
@@ -76,7 +91,9 @@ Run the default unit test suite:
 uv run pytest
 ```
 
-During the current TDD red phase, this command is expected to fail on the unimplemented service and pipeline stubs. To run only the already-green schema and benchmark-helper tests:
+During the current TDD red phase, this command is expected to fail on the unimplemented service and pipeline stubs. 
+
+To run only the already-green schema and benchmark-helper tests:
 
 ```bash
 uv run pytest tests/test_types.py tests/test_eval_metrics.py tests/test_clear_dataset.py
@@ -89,10 +106,11 @@ uv run ruff check .
 uv run ruff format .
 ```
 
-Run the live SLM consistency evals after starting Ollama with `gemma:2b` available:
+### Red
+
+Run tests for ollama server
 
 ```bash
-ollama run gemma:2b
 uv run pytest evals/suites/test_slm_consistency.py -s
 ```
 

@@ -48,7 +48,6 @@ CPU-based syntactic parsing including the following:
 - passive voice word count (`auxpass` dependency parsing)
 - noun to verb ratio
 
-//TODO: tests to add
 - Correct identification of passive voice sentence structures
 - Edge case handling: empty strings, whitespace-only input, and non-English text payloads
 

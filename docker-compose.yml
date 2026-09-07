@@ -1,0 +1,18 @@
+name: py-char-bytes
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+    ports:
+      # To ensure the container is only accessible from your home Wi-Fi network (and never publicly or over other interfaces), explicitly bind the port to your server's internal local IP address:
+      - "192.168.1.15:8000:8000"
+
+    networks:
+    - shared-network
+
+networks:
+  shared-network:
+    external: true
